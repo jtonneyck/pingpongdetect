@@ -23,11 +23,6 @@ io.on('connection', function(socket){
   console.log('a user connected');
 });
 
-// app.get("/", (req, res) => {
-//      if(free) res.status(200).send("The ping pong table is free!")
-//      else if(!free) res.status(200).send("The ping pong table is occupied!")
-// })
-
 app.get("/", (req, res)=> {
 	res.sendfile(__dirname + '/index.html')
 })
