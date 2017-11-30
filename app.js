@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-
+app.set("port", process.env.port)
 let free = false
 app.get("/pingpong", (req, res) => {
 	console.log("query", req.query.free)
@@ -26,7 +26,7 @@ io.on('connection', function(socket){
 app.get("/", (req, res)=> {
 	res.sendfile(__dirname + '/index.html')
 })
-server.listen(3000 , function() {
-	console.log('Node app is running on port', 3000);
+server.listen(app.get("port"), function() {
+	console.log('Node app is running on port', app.get("port"));
 });
 
