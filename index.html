@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<style>
+.button {
+   background-color: #4CAF50 ; /* Green */
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   font-size: 6vw;
+   text-decoration: none;
+   cursor: pointer;
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.center{  
+   margin: auto;
+   max-width: 80%;
+   min-width: 50%;
+   width: 1000px;
+}
+
+.chart{
+   width: 500px;
+   height: auto;
+   margin: auto;
+   margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<div class="center">
+  <button class="button" id="occu"><p id="pingStatus"></p></button>
+</div>  
+
+<div class="chart">
+  <canvas id="chartJSContainer" width="1000" height="400"></canvas>
+</div>
+
+<script>
+  var socket = io("http://localhost:3000");
+  socket.on('pingStatus', function(availabilty){
+    console.log("availability", availabilty)
+    if(availabilty) {
+      $("#pingStatus").html("The ping pong table is available")
+      $(".button").css("background-color", "#4CAF50")
+
+    }
+    else if(!availabilty) {
+      $("#pingStatus").html("The ping pong table is occupied")
+      $(".button").css("background-color", "red")
+    }
+  });  
+</script>
+
+</body>
+</html>
