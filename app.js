@@ -5,6 +5,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 app.use(express.static('public'))
 app.set("port", process.env.port)
+app.set("view engine", "pug")
 
 let free = false
 app.get("/pingpong", (req, res) => {
@@ -26,7 +27,7 @@ io.on('connection', function(socket){
 });
 
 app.get("/", (req, res)=> {
-	res.sendfile(__dirname + '/index.html')
+	res.render("index", {pingpongFree: free})
 })
 server.listen(app.get("port"), function() {
 	console.log('Node app is running on port', app.get("port"));

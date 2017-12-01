@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		script(src='https://code.jquery.com/jquery-3.2.1.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js')
+		link(rel='stylesheet', href='custom.css')
+		script(src="custom.js")
+	body
+		.center
+			if pingpongFree == true
+				button(id='occu' class='button' style="background-color: #4CAF50") 
+					p(id='pingStatus') The ping pong table is available! :) 
+			else
+				button(id='occu' class='button' style="background-color: red") 
+					p(id='pingStatus') The ping pong table is occupied. :(
