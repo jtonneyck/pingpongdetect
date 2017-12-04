@@ -12,9 +12,9 @@
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.center{  
-   margin: auto;
-   margin-top: 20%;
+.center{ 
+
+   margin: 25% auto;
    max-width: 80%;
    min-width: 50%;
    width: 1000px;
