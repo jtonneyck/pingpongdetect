@@ -8,8 +8,6 @@ app.set("port", process.env.port)
 app.set("view engine", "pug")
 const db = require("./models/index")
 
-console.log(db.pingpongstats.getThisWeeksStats())
-
 let free = false
 app.get("/pingpong", (req, res) => {
 	console.log("query", req.query.free)
