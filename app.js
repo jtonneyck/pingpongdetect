@@ -38,11 +38,11 @@ io.on('connection', function(socket){
 });
 
 app.get("/", (req, res)=> {
-	db.pingpongstats.getThisWeeksStats()
-	.then((stats)=> {
-		res.render("index2", {pingpongStats: stats})
-	})	
-	// res.render("index", {pingpongFree: free, thisWeeksStats: db.pingpongstats.getThisWeeksStats()})
+	// db.pingpongstats.getThisWeeksStats()
+	// .then((stats)=> {
+	// 	res.render("index2", {pingpongStats: stats})
+	// })	
+	res.render("index", {pingpongFree: free})
 })
 server.listen(app.get("port"), function() {
 	console.log('Node app is running on port', app.get("port"));

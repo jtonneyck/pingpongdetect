@@ -17,6 +17,7 @@
 		$("#submitMessage").click(function() {
 			console.log("Message send")
 			var theMessage = $("#message").val()
+			$("#message").val("")
 			socket.emit("chat message", theMessage)
 		})
 		
