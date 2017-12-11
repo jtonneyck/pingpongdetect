@@ -8,12 +8,15 @@ app.set("port", process.env.port)
 app.set("view engine", "pug")
 const db = require("./models/index")
 
+console.log(db.pingpongstats.getThisWeeksStats())
+
 let free = false
 app.get("/pingpong", (req, res) => {
 	console.log("query", req.query.free)
 	if(req.query.free == "true") {
 		console.log("test true")
 		free = true
+		if(db.pingpongstats.find)
 		db.pingpongstats.create({
 			state: true
 		})
@@ -34,6 +37,9 @@ io.on('connection', function(socket){
 	socket.on('chat message', function(message) {
 		console.log("message received")
 		io.emit("chat message", message)
+		db.chatmessage.create({
+			message: message
+		})
 	})  
 });
 

@@ -14,11 +14,16 @@
 	});
 
 	$(document).ready(function() {
-		$("#submitMessage").click(function() {
-			console.log("Message send")
-			var theMessage = $("#message").val()
-			socket.emit("chat message", theMessage)
+		$("#submitUserName").click(function() {
+			let username= ("submitMessage").val()
+			$("#submitMessage").click(function() {
+				console.log("Message send")
+				var theMessage = $("#message").val()
+				$("#message").val("")
+				socket.emit("chat message", theMessage)
+			})			
 		})
+
 		
 		socket.on("chat message", function(newMessage) {
 

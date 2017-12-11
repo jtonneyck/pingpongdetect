@@ -4,7 +4,7 @@
    color: white;
    padding: 15px 32px;
    text-align: center;
-   font-size: 6vw;
+   font-size: 5vw;
    text-decoration: none;
    cursor: pointer;
    -webkit-transition-duration: 0.4s; /* Safari */
@@ -13,7 +13,6 @@
 }
 
 .center{ 
-
    margin: 25% auto;
    max-width: 80%;
    min-width: 50%;
