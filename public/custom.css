@@ -1,10 +1,14 @@
-.button {
+#occupied {
+   display: block;
+   width: 80%;
+   margin: 5% auto;
+   margin-bottom: 2.5%; 
    background-color: #4CAF50 ; /* Green */
    border: none;
    color: white;
    padding: 15px 32px;
    text-align: center;
-   font-size: 6vw;
+   font-size: 4vw;
    text-decoration: none;
    cursor: pointer;
    -webkit-transition-duration: 0.4s; /* Safari */
@@ -12,10 +16,41 @@
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.center{  
-   margin: auto;
-   margin-top: 20%;
-   max-width: 80%;
-   min-width: 50%;
-   width: 1000px;
+#chatwindow {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   box-sizing: border-box;
+   margin: 5% auto;
+   margin-top: 2.5%;
+   width: 80%;
+   border: solid 5px red;
+   position: relative;
+   display: block;
+
+}
+
+#allMessagesWindow {
+   height: 85%;
+   overflow-y: scroll;
+}
+
+#chatwindow li {
+   list-style-type: none;
+}
+
+#message, #submitMessage {
+   position: absolute;
+   bottom: 0;
+   height: 15%;
+   border: 1px solid grey;
+   padding: 0px;
+   box-sizing: border-box;
+}
+
+#message {
+   width: 80%;
+}
+
+#submitMessage {
+   width: 20%;
+   right: 0;
 }

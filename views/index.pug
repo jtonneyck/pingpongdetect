@@ -6,10 +6,32 @@ html
 		link(rel='stylesheet', href='custom.css')
 		script(src="custom.js")
 	body
-		.center
+		div(.container)
 			if pingpongFree == true
-				button(id='occu' class='button' style="background-color: #4CAF50") 
+				button(id='occupied') 
 					p(id='pingStatus') The ping pong table is available! :) 
 			else
-				button(id='occu' class='button' style="background-color: red") 
+				button(id='occupied') 
 					p(id='pingStatus') The ping pong table is occupied. :(
+
+			div(id="chatwindow")
+				div(id="allMessagesWindow")
+					ul(id="allMessages")
+				input(id="message")
+				button(id="submitMessage") Post
+
+		
+			if pingpongFree == true
+				style.
+					#occupied {
+						background-color: #4CAF50;
+					}
+					#chatwindow {
+					   border: solid 5px green;
+					}
+			else
+				style.
+					#occupied {
+						background-color: red;
+					}
+	

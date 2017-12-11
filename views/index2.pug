@@ -1,0 +1,40 @@
+html
+	head
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js")
+	body
+		
+		canvas(id="myChart")
+
+		script.
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var pingpongStats = !{JSON.stringify(pingpongStats)}
+			// Gives ms free per hour per day of the week
+			var labels = []
+			var data = []
+			for(var i = 0; i < 23; i++) {
+					labels.push(`${i}:00 - ${i+1}:00`)
+					if(pingpongStats[0][`${i}`]) {
+						// Should give time occupied 
+						data.push(1 - (pingpongStats[0][`${i}`] / 3600000))
+					}
+					else {
+						data.push(0)
+					}
+			}
+			var chart = new Chart(ctx, {
+			    // The type of chart we want to create
+			    type: 'bar',
+			    // The data for our dataset
+			    data: {
+			        labels: labels,
+			        datasets: [{
+			            label: "My First dataset",
+			            backgroundColor: 'rgb(255, 99, 132)',
+			            borderColor: 'rgb(255, 99, 132)',
+			            data: data,
+			        }]
+			    },
+
+			    // Configuration options go here
+			    options: {}
+			});		
