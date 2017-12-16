@@ -10,12 +10,10 @@ let Chatmessages = sequelize.define("chatmessages", {
 	message: {
 		type: DataTypes.STRING
 	},
-	user: {
-		type: DataTypes.SRING
+	username: {
+		type: DataTypes.STRING
 	}
 })
 
-
-
-return Pingpongstats
+	return Chatmessages
 }

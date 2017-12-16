@@ -4,6 +4,7 @@ html
 		script(src='https://code.jquery.com/jquery-3.2.1.js')
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js')
 		link(rel='stylesheet', href='custom.css')
+		link(rel="stylesheet", href="reset.css")
 		script(src="custom.js")
 	body
 		div(.container)
@@ -17,8 +18,10 @@ html
 			div(id="chatwindow")
 				div(id="allMessagesWindow")
 					ul(id="allMessages")
-				input(id="message")
-				button(id="submitMessage") Post
+						each message in messages
+							li #{message.username}: #{message.message}
+				input(class="inputChat" id="username" placeholder="username")
+				button(class="submitChat" id="submitUserName") Submit
 
 		
 			if pingpongFree == true

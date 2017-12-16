@@ -29,15 +29,17 @@
 }
 
 #allMessagesWindow {
-   height: 85%;
    overflow-y: scroll;
+   height: 82%;
 }
 
 #chatwindow li {
    list-style-type: none;
+   padding-left: 0px;
+   margin-left: 0px;
 }
 
-#message, #submitMessage {
+.inputChat, .submitChat {
    position: absolute;
    bottom: 0;
    height: 15%;
@@ -46,11 +48,17 @@
    box-sizing: border-box;
 }
 
-#message {
+.inputChat {
    width: 80%;
 }
 
-#submitMessage {
+.submitChat {
    width: 20%;
    right: 0;
+}
+
+/*prevent auto zoom input fields
+*/
+textarea {
+   font-size: 16px;
 }

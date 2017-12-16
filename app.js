@@ -19,7 +19,7 @@ app.get("/pingpong", (req, res) => {
 		if(db.pingpongstats.find)
 		db.pingpongstats.create({
 			state: true
-		})
+		})	
 	}
 	else if (req.query.free == "false") {
 		console.log("test false")
@@ -33,20 +33,52 @@ app.get("/pingpong", (req, res) => {
 })
 
 io.on('connection', function(socket){
-  	console.log('a user connected');
+	socket.on("username",function(username) {
+		socket.username = username
+		console.log("The username", socket.username)
+	})
 	socket.on('chat message', function(message) {
-		console.log("message received")
-		io.emit("chat message", message)
-		db.chatmessage.create({
-			message: message
+		debugger		
+		io.emit("chat message", {message: message, username: socket.username} )
+		db.chatmessages.create({
+			message: message,
+			username: socket.username
+		})
+		.catch((err)=> {
+			throw err
 		})
 	})  
 });
 
+app.get("/moremessages", (req, res)=> {
+	let offset = req.query.offset * 30
+	db.chatmessages.findAll({
+		limit: 30,
+		offset: offset,
+		order: [["createdAt", "DESC"]]
+	}).then((messages)=> {
+		messages = messages.reverse()
+		res.json({messages: messages}).status(200).end()
+	}).catch((error)=> {
+		res.status(500).end()
+	})
+})
+
 app.get("/", (req, res)=> {
-	db.pingpongstats.getThisWeeksStats()
-	.then((stats)=> {
-		res.render("index2", {pingpongStats: stats})
+	db.chatmessages.findAll({
+		limit: 30,
+		order: [["createdAt", "DESC"]]
+	})
+	.then((messages)=> {
+		db.pingpongstats.getThisWeeksStats()
+		.then((stats)=> {
+			// Get the Last 30, but those have to be ascending
+			messages = messages.reverse()
+			res.render("index", {pingpongStats: stats, messages: messages})
+		})
+	})
+	.catch((err)=> {
+		throw err
 	})	
 	// res.render("index", {pingpongFree: free, thisWeeksStats: db.pingpongstats.getThisWeeksStats()})
 })
