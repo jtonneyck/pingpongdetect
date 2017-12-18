@@ -12,17 +12,17 @@ console.log(db.pingpongstats.getThisWeeksStats())
 
 let free = false
 app.get("/pingpong", (req, res) => {
-		console.log("Pingpongstatus changed")
-		if(req.query.free == "true") {
-			if(free== true) {
-			throw new Error("switched to same state")
-		} else {
-			free = true
-			if(db.pingpongstats.find)
-			db.pingpongstats.create({
-				state: true
-			})			
-		}
+	console.log("Pingpongstatus changed")
+	if(req.query.free == "true") {
+		if(free== true) {
+		throw new Error("switched to same state")
+	} else {
+		free = true
+		if(db.pingpongstats.find)
+		db.pingpongstats.create({
+			state: true
+		})			
+	}
 	}
 	else if (req.query.free == "false") {
 		console.log("test false")
