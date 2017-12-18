@@ -67,7 +67,7 @@ function getWeeklyStats(startDate, endDate) {
 			    days[moment(res[i].createdAt).day()][moment(res[i].createdAt).hour()] = days[moment(res[i].createdAt).day()][moment(res[i].createdAt).hour()] + timeFree
 			}
 			else if(res[i].state == true && res[i + 1].state == true || res[i].state == false && res[i + 1].state == false) {
-			  throw new Error(`"Corrupt data, state switched to same state. Check row: ${i}`)
+			  throw new Error(`"Corrupt data, state switched to same state. Check row: ${res[i].id}`)
 			}
 		} 
 		return days
