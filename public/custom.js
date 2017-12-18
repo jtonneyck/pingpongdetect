@@ -33,13 +33,12 @@
 		})				 	
  
 		// To enable sending messages on enter AND click
-		$("#username").keyup(function(e){
+		$("#username").keyup(function(event){
 			if(event.keyCode === 13) {
 				document.getElementById("submitUserName").click()
 			}
 		})
-	
-	
+
 		$("#submitUserName").click(function() {
 			let username= $("#username").val()
 			$("#submitUserName").remove()
@@ -49,11 +48,12 @@
 				<button class='submitChat' id='submitMessage'> Post </button>
 				`)
 			// To enable sending messages on enter AND click
-			$("#message").keyup(function(e){
+			$("#message").keyup(function(event){
 				if(event.keyCode === 13) {
 					document.getElementById("submitMessage").click()
 				}
 			})
+	
 			socket.emit("username", username)
 			$("#submitMessage").click(function() {
 				console.log("Message send")
@@ -63,15 +63,9 @@
 			})			
 		})
 
-		
 		socket.on("chat message", function(data) {
 			$("#allMessages").append(`<li> ${data.username}: ${data.message}</li>`)
 			var element = document.getElementById("allMessagesWindow");
 			    element.scrollTop = element.scrollHeight;
 		})
-
-		var wHeight = $(window).height()
-		$("#occupied").css("height", (wHeight * 0.4))
-		$("#chatwindow").css("height", (wHeight * 0.4))
-
 	})

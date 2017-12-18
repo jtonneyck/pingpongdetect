@@ -3,11 +3,12 @@ html
 	head
 		script(src='https://code.jquery.com/jquery-3.2.1.js')
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js')
-		link(rel='stylesheet', href='custom.css')
 		link(rel="stylesheet", href="reset.css")
+		meta(name='viewport' content="width=device-width,initial-scale=1")
 		script(src="custom.js")
+		link(rel="stylesheet", href="custom.css")
 	body
-		div(.container)
+		div(class="container")
 			if pingpongFree == true
 				button(id='occupied') 
 					p(id='pingStatus') The ping pong table is available! :) 
