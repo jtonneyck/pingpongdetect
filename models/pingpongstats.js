@@ -74,7 +74,6 @@ function getWeeklyStats(startDate, endDate) {
 	})
 	.catch(e => console.log(e))
   }
-
 return Pingpongstats
 }
 
