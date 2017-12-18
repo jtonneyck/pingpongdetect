@@ -92,7 +92,7 @@ app.get("/", (req, res)=> {
 		.then((stats)=> {
 			// Get the Last 30, but those have to be ascending
 			messages = messages.reverse()
-			res.render("index", {pingpongStats: stats, messages: messages})
+			res.render("index", {pingpongStats: stats, messages: messages, pingpongFree: free})
 		})
 	})
 	.catch((err)=> {
