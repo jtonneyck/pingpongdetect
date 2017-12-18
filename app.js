@@ -11,6 +11,17 @@ const db = require("./models/index")
 console.log(db.pingpongstats.getThisWeeksStats())
 
 let free = false
+
+db.pingpongstats.findAll({
+  limit: 1,
+  order: [ [ 'createdAt', 'DESC' ]]
+})
+.then((result)=> {
+	free = result[0].state
+}).catch((err)=> {
+	throw err
+})
+
 app.get("/pingpong", (req, res) => {
 	console.log("Pingpongstatus changed")
 	if(req.query.free == "true") {
