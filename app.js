@@ -29,14 +29,12 @@ app.get("/pingpong", (req, res) => {
 		throw new Error("switched to same state")
 	} else {
 		free = true
-		if(db.pingpongstats.find)
 		db.pingpongstats.create({
 			state: true
 		})			
 	}
 	}
 	else if (req.query.free == "false") {
-		console.log("test false")
 		if(free== false) {
 			throw new Error("switched to same state")
 		}else {
