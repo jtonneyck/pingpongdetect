@@ -59,8 +59,6 @@ function getWeeklyStats(startDate, endDate) {
 			  if(moment(res[i+1].createdAt).isAfter(moment(res[i].createdAt).endOf("hour"))) {
 			    res.splice(i + 1, 0, {state: false, createdAt: moment(res[i].createdAt).endOf("hour")})
 			    res.splice(i + 2, 0, {state: true, createdAt: moment(res[i + 1].createdAt).add(1, "hours").startOf("hour")})
-				// console.log(res)
-				console.log("LENGTH", res.length)	
 			  }   
 			  let timeFree = moment(res[i + 1].createdAt) - moment(res[i].createdAt)
 			  //console.log(`TIME FREE BETWEEN ${moment(res[i].createdAt).format()} and ${moment(res[i + 1].createdAt).format()}:  ${timeFree}`)
@@ -69,10 +67,9 @@ function getWeeklyStats(startDate, endDate) {
 			    days[moment(res[i].createdAt).day()][moment(res[i].createdAt).hour()] = days[moment(res[i].createdAt).day()][moment(res[i].createdAt).hour()] + timeFree
 			}
 			else if(res[i].state == true && res[i + 1].state == true || res[i].state == false && res[i + 1].state == false) {
-			  throw new Error("Corrupt data, state switched to same state")
+			  throw new Error("Corrupt data, state switched to same state. Check row: ", i)
 			}
 		} 
-		console.log("DAYS", days)
 		return days
 	})
 	.catch(e => console.log(e))
