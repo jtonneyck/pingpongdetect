@@ -90,7 +90,8 @@ app.get("/", (req, res)=> {
 		.then((stats)=> {
 			// Get the Last 30, but those have to be ascending
 			messages = messages.reverse()
-			res.render("index", {pingpongStats: stats, messages: messages, pingpongFree: free})
+			// res.render("index", {pingpongStats: stats, messages: messages, pingpongFree: free})
+			res.send("The Ping Pong Detector is offline. The motion detector was damaged. :(")
 		})
 	})
 	.catch((err)=> {
